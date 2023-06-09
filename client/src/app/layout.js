@@ -4,7 +4,7 @@ import "./globals.scss";
 import { Inter } from "next/font/google";
 import { AuthContextProvider } from "@/context/AuthContext";
 import { ChatContextProvider } from "@/context/ChatContext";
-
+import { PeerProvider } from "@/context/Peer";
 import { useContext } from "react";
 import Spinner from "@/components/Spinner";
 import { SpinnerContextProvider } from "@/context/SpinnerContext";
@@ -27,11 +27,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <AuthContextProvider>
-          <ChatContextProvider>
-            <SpinnerContextProvider>
-              <SocketProvider>{children}</SocketProvider>
-            </SpinnerContextProvider>
-          </ChatContextProvider>
+          <ChatContextProvider>{children}</ChatContextProvider>
         </AuthContextProvider>
       </body>
     </html>

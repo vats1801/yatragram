@@ -17,8 +17,8 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="user">
-        <img src={currentUser.photoURL} alt="" />
-        <span>{currentUser.displayName}</span>
+        <img src={currentUser?.photoURL} alt="" />
+        <span>{currentUser?.displayName}</span>
         <button onClick={handleLogout}>logout</button>
       </div>
     </div>

@@ -1,23 +1,48 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   AiOutlineHome,
   AiOutlineSearch,
   AiOutlineVideoCameraAdd,
 } from "react-icons/ai";
+import { auth } from "@/firebase";
+import { signOut } from "firebase/auth";
 import { BiMessageRounded } from "react-icons/bi";
 import { MdOutlineExplore, MdOutlineCreateNewFolder } from "react-icons/md";
 import { BsCameraReels } from "react-icons/bs";
 import { GrAddCircle } from "react-icons/gr";
 import Link from "next/link";
-import { SpinnerContext } from "@/context/SpinnerContext";
+import { useRouter } from "next/navigation";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function Sidebar() {
-  const { dispatch } = useContext(SpinnerContext);
+  const { currentUser } = useContext(AuthContext);
+  const router = useRouter();
+  useEffect(() => {
+    const alanBtn = require("@alan-ai/alan-sdk-web");
+    alanBtn({
+      key: "269e8c7ee21cae0077b9cf3440f535832e956eca572e1d8b807a3e2338fdd0dc/stage",
+      onCommand: (commandData) => {
+        if (commandData.command === "go:back") {
+          alert("going back");
+        }
+        if (commandData.command === "openCreate") {
+          router.push("/create");
+        }
+        if (commandData.command === "openProfile") {
+          router.push("/user/1");
+        }
+        if (commandData.command === "openPostId") {
+          router.push("/post/1");
+        }
+        if (commandData.command === "logOut") {
+          auth.signOut();
+          router.push("/login");
+        }
+      },
+    });
+  }, []);
 
-  const handleSelect = (u) => {
-    dispatch({ type: "LOAD" });
-  };
   return (
     <div className=" w-[250px] p-5 space-y-5 h-screen text-white border-r border-r-gray-600">
       <div className=" px-5 h-[100px]">
@@ -25,7 +50,6 @@ export default function Sidebar() {
       </div>
 
       <Link
-        onClick={handleSelect}
         href="/"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -35,7 +59,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/search"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -45,7 +68,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/explore"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -55,7 +77,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/reel"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -74,7 +95,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/chat"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -84,7 +104,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/live"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -94,7 +113,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/vlog"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -104,7 +122,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/premium"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >
@@ -114,7 +131,6 @@ export default function Sidebar() {
         </div>
       </Link>
       <Link
-        onClick={handleSelect}
         href="/user/1"
         className="px-3 py-2 space-x-5 flex items-center hover:bg-gray-600  rounded-md"
       >

@@ -20,7 +20,7 @@ export default function GoLive() {
 
   const goLive = useCallback(() => {
     socket.emit("room:join", { email, room });
-  }, [room, socket]);
+  }, [email, room, socket]);
 
   const handleJoinRoom = useCallback(
     (data) => {
