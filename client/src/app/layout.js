@@ -4,12 +4,8 @@ import "./globals.scss";
 import { Inter } from "next/font/google";
 import { AuthContextProvider } from "@/context/AuthContext";
 import { ChatContextProvider } from "@/context/ChatContext";
-import { PeerProvider } from "@/context/Peer";
+
 import { useContext } from "react";
-import Spinner from "@/components/Spinner";
-import { SpinnerContextProvider } from "@/context/SpinnerContext";
-import { SpinnerContext } from "@/context/SpinnerContext";
-import { SocketProvider } from "@/context/SocketContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +15,6 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const checkLoading = () => {
-    const { data } = useContext(SpinnerContext);
-  };
   // data.isLoading ? <Spinner /> : children
   return (
     <html lang="en">

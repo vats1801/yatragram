@@ -12,6 +12,7 @@ import { BsBookmark } from "react-icons/bs";
 
 export default function page() {
   const [domLoaded, setDomLoaded] = useState(false);
+  const [play, setPlay] = useState(false);
 
   useEffect(() => {
     setDomLoaded(true);
@@ -23,9 +24,9 @@ export default function page() {
           {" "}
           <Sidebar />
           <div className="px-5 py-10 flex-1 space-y-12 flex flex-col items-center  overflow-y-scroll   h-screen scrollbar-hide  ">
-            <div className="   border-2 relative border-blue-700">
+            <div className="    relative ">
               <ReactPlayer
-                url="https://youtu.be/yxXzMqyHFJc"
+                url="https://firebasestorage.googleapis.com/v0/b/yatragram-ae439.appspot.com/o/TAG%20A%20HOLI%20LOVER%20%20Holi%20is%20around%20the%20corner%20so%20I%20am%20sharing%20a%20few%20shots%20from%20my%20last%20year%E2%80%99s%20crazy%20holi%20experience.%20Already%20in%20FOMO%20as%20I%20wouldnt%20be%20in%20India%20to%20celebrate%20holi%20Aapki%20holi%20party%20kaha%20hai%20.mp4?alt=media&token=57cb59f4-3bf4-4a1f-bbf5-0ecd2f7e1041&_gl=1*x5xts9*_ga*MTI2NjE1NzQ1MS4xNjgxMjgzOTc5*_ga_CW55HF8NVT*MTY4NjMzODQzMi4xMi4xLjE2ODYzMzk1OTQuMC4wLjA."
                 controls="true"
                 width={350}
                 height={650}
@@ -47,9 +48,9 @@ export default function page() {
                 </div>
               </div>
             </div>
-            <div className="   border-2 relative border-blue-700">
+            <div className="    relative ">
               <ReactPlayer
-                url="https://youtu.be/yxXzMqyHFJc"
+                url="https://firebasestorage.googleapis.com/v0/b/yatragram-ae439.appspot.com/o/When%20someone%20asks%20what%20is%20in%20your%20Uttarakhand!...%23himalayasin%20%23chalotripkarein%20%23thehimalayanlife%20%23devbhoomi%20%23uttarakhand%20%23uttarakhandheaven%20%23devbhoomiuttarakhand.mp4?alt=media&token=7a771ce9-6a03-42b0-97cc-364a684f5ec0&_gl=1*ha5wx3*_ga*MTI2NjE1NzQ1MS4xNjgxMjgzOTc5*_ga_CW55HF8NVT*MTY4NjMzODQzMi4xMi4xLjE2ODYzMzg2OTQuMC4wLjA."
                 controls="true"
                 width={350}
                 height={650}

@@ -2,6 +2,7 @@ import Map from "@/components/Map";
 import List from "@/components/List";
 import Sidebar from "@/components/Sidebar";
 import React from "react";
+import { Autocomplete } from "@react-google-maps/api";
 
 export default function page() {
   return (
@@ -19,11 +20,13 @@ export default function page() {
           <div className=" w-[150px] py-3 text-center border rounded-md  hover:bg-white hover:text-black border-white">
             <p>Attractions</p>
           </div>
-          <input
-            type="search"
-            placeholder=" Search Location"
-            className="  flex-1 py-3 px-10 bg-gray-600 text-white rounded-xl"
-          />
+          <Autocomplete>
+            <input
+              type="search"
+              placeholder=" Search Location"
+              className="  flex-1 py-3 px-10 bg-gray-600 text-white rounded-xl"
+            />
+          </Autocomplete>
           <div className=" w-[150px] py-3 bg-gray-400 shadow-md text-blue-800 text-center  rounded-md">
             <p>Ladakh</p>
           </div>

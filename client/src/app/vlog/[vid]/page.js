@@ -3,13 +3,18 @@ import Sidebar from "@/components/Sidebar";
 import ReactPlayer from "react-player";
 import React, { useState, useEffect } from "react";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 export default function page() {
   const [domLoaded, setDomLoaded] = useState(false);
+  const [vlog, setVlog] = useState("https://youtu.be/V_08pyhaaTo");
+
+  const router = useRouter();
   let vlogs = [
     {
       id: 1,
       thumbnail: "https://i.ytimg.com/vi/JetvgEtSNMM/maxresdefault.jpg",
+      url: "https://youtu.be/0ps48mCfbN0",
       user: {
         image:
           "https://th.bing.com/th/id/OIP.tuZI9kOeq_ydF-G4pFRM8gHaLH?pid=ImgDet&rs=1",
@@ -19,15 +24,7 @@ export default function page() {
     {
       id: 2,
       thumbnail: "https://i.ytimg.com/vi/JetvgEtSNMM/maxresdefault.jpg",
-      user: {
-        image:
-          "https://th.bing.com/th/id/OIP.tuZI9kOeq_ydF-G4pFRM8gHaLH?pid=ImgDet&rs=1",
-        name: "Sudhanshu vats",
-      },
-    },
-    {
-      id: 3,
-      thumbnail: "https://i.ytimg.com/vi/JetvgEtSNMM/maxresdefault.jpg",
+      url: "https://youtu.be/mVOQIXbyexw",
       user: {
         image:
           "https://th.bing.com/th/id/OIP.tuZI9kOeq_ydF-G4pFRM8gHaLH?pid=ImgDet&rs=1",
@@ -52,11 +49,11 @@ export default function page() {
             <div className=" flex space-x-5  text-white  ">
               <div className=" space-y-5 w-[900px]">
                 <ReactPlayer
-                  url="https://youtu.be/UqmtgMrBZvM"
+                  url={vlog}
                   controls="true"
                   width={900}
                   height={500}
-                  className="  border-2  border-blue-700"
+                  // className="  border-2  border-blue-700"
                 />
                 <div className=" space-y-5">
                   <p className="text-md">
@@ -84,7 +81,7 @@ export default function page() {
                   during the season is something to be proud of ❤️ #ipl
                 </p>
               </div>
-              <div className="bg-gray-700 rounded-lg  shadow-md h-[700px] py-3 flex-1 px-5 ">
+              <div className=" bg-zinc-800 rounded-lg  shadow-md h-[700px] py-3 flex-1 px-5 ">
                 <p>Recoomended</p>
                 <div className=" mt-3 space-y-3  w-full flex flex-col items-center h-[600px] overflow-y-scroll scrollbar-hide ">
                   {vlogs.map((v, i) => (
@@ -95,6 +92,7 @@ export default function page() {
                       <img
                         src={v.thumbnail}
                         className=" w-full h-full rounded-lg object-cover hover:border-4 hover:border-blue-800"
+                        onClick={() => setVlog(v.url)}
                       />
                     </div>
                   ))}

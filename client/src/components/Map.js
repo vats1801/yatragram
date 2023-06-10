@@ -1,5 +1,8 @@
+"use client";
 import React from "react";
+import googleMapReact from "google-map-react";
 
 export default function Map() {
-  return <div className=" w-[75%]">Map</div>;
+  const coordinates = { lat: 0, lng: 0 };
+  return <div className=" w-[75%]">hi</div>;
 }

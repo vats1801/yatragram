@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import { AiOutlineCamera } from "react-icons/ai";
 import { BsMic } from "react-icons/bs";
 import { useRouter } from "next/navigation";
-import { useSocket } from "@/context/SocketContext";
 
 export default function GoLive() {
   const [stream, setStream] = useState(null);
@@ -14,31 +13,13 @@ export default function GoLive() {
 
   const router = useRouter();
 
-  const socket = useSocket();
-
   const getCamera = () => {};
 
-  const goLive = useCallback(() => {
-    socket.emit("room:join", { email, room });
-  }, [email, room, socket]);
+  const goLive = () => {};
 
-  const handleJoinRoom = useCallback(
-    (data) => {
-      const { email, room } = data;
-      router.push(`/live/room/${room}`);
-    },
-    [router]
-  );
-  useEffect(() => {
-    socket.on("room:join", handleJoinRoom);
-
-    return () => {
-      socket.off("join:room", handleJoinRoom);
-    };
-  }, [socket, handleJoinRoom]);
   return (
     <div className="space-y-10  flex flex-col items-center">
-      {/* <div className=" flex space-x-10">
+      <div className=" flex space-x-10">
         <button
           onClick={getCamera}
           className=" px-5 py-2 text-white bg-gray-700 rounded-lg"
@@ -51,9 +32,9 @@ export default function GoLive() {
         >
           Go Live
         </button>
-      </div> */}
+      </div>
 
-      {/* <div className=" rounded-lg relative">
+      <div className=" rounded-lg relative">
         <video
           autoPlay
           muted
@@ -69,8 +50,8 @@ export default function GoLive() {
             className=" hover:bg-gray-400 rounded-full hover:text-black w-10 h-10 p-2"
           />
         </div>
-      </div> */}
-      {/* <input
+      </div>
+      <input
         type="text"
         placeholder="Write Description"
         className=" px-5 py-5 bg-gray-600 rounded-lg text-white outline-none w-full "
@@ -91,13 +72,7 @@ export default function GoLive() {
           />
           <label className=" text-lg">Regular</label>
         </div>
-      </div> */}
-
-      <label>EMail</label>
-      <input type="email" onChange={(e) => setEmail(e.target.value)} />
-      <label>Room</label>
-      <input type="text" onChange={(e) => setRoom(e.target.value)} />
-      <button onClick={goLive}>Go Live</button>
+      </div>
     </div>
   );
 }

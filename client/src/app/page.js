@@ -9,9 +9,10 @@ import {
   AiFillCaretRight,
 } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
+import { MdOutlineLocationOn } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { RxCross1 } from "react-icons/rx";
-import { SpinnerContext } from "@/context/SpinnerContext";
+
 import Carousel from "@/components/Carousel";
 
 export default function Home() {
@@ -43,6 +44,7 @@ export default function Home() {
       id: 1,
       author: {
         uid: 1,
+        isPremium: false,
         name: "sudhanshu vats",
         image:
           "https://th.bing.com/th/id/OIP.tuZI9kOeq_ydF-G4pFRM8gHaLH?pid=ImgDet&rs=1",
@@ -54,8 +56,10 @@ export default function Home() {
     },
     {
       id: 1,
+
       author: {
         uid: 1,
+        isPremium: true,
         name: "sudhanshu vats",
         image:
           "https://th.bing.com/th/id/OIP.tuZI9kOeq_ydF-G4pFRM8gHaLH?pid=ImgDet&rs=1",
@@ -110,6 +114,7 @@ export default function Home() {
     },
     {
       id: 1,
+
       image: "https://i.ibb.co/XXR8kzF/3.png",
       user: {
         name: "vats",
@@ -161,14 +166,13 @@ export default function Home() {
           <div
             style={{
               width: "15%",
-              height: "calc(100vh - 64px)",
 
               padding: "10x",
               alignItems: "center",
 
               backgroundColor: "black",
             }}
-            className=" space-y-5 px-20 py-40"
+            className=" h-[600px] overflow-y-scroll scrollbar-hide space-y-5 px-20 mt-20"
           >
             {stories.map((s, i) => (
               <div
@@ -290,6 +294,13 @@ export default function Home() {
                           className=" w-8 h-8 rounded-full object-cover"
                         />
                         <p className=" text-sm">{p.author.name}</p>
+                        {p.author.isPremium && (
+                          <img
+                            src="https://cdn2.iconfinder.com/data/icons/essentials-volume-i/128/verified-gold-512.png"
+                            className=" w-[20px] h-[20px] "
+                          />
+                        )}
+                        <p>Ladakh</p>
                       </div>
                     </div>
                     <div>
@@ -314,8 +325,8 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className=" w-[400px] p-10 space-y-5">
-              <p>Trending</p>
+            <div className=" w-[400px] px-10 py-5 space-y-5">
+              <h1 className=" font-bold text-2xl">Trending</h1>
               <p>Travallers</p>
               <div className="space-y-5">
                 <div className="flex space-x-5 items-center">
@@ -324,6 +335,12 @@ export default function Home() {
                     className=" w-8 h-8 rounded-full object-cover"
                   />
                   <p className=" text-sm">Sudhanshu vats</p>
+                  {/* {p.author.isPremium && ( */}
+                  <img
+                    src="https://cdn2.iconfinder.com/data/icons/essentials-volume-i/128/verified-gold-512.png"
+                    className=" w-[20px] h-[20px] "
+                  />
+                  {/* )} */}
                   <button className=" px-5 py-1 text-sm bg-blue-700 text-white rounded-lg">
                     Follow
                   </button>
@@ -334,6 +351,12 @@ export default function Home() {
                     className=" w-8 h-8 rounded-full object-cover"
                   />
                   <p className=" text-sm">Sudhanshu vats</p>
+                  {/* {p.author.isPremium && ( */}
+                  <img
+                    src="https://cdn2.iconfinder.com/data/icons/essentials-volume-i/128/verified-gold-512.png"
+                    className=" w-[20px] h-[20px] "
+                  />
+                  {/* )} */}
                   <button className=" px-5 py-1 text-sm bg-blue-700 text-white rounded-lg">
                     Follow
                   </button>
@@ -341,19 +364,42 @@ export default function Home() {
               </div>
               <p>Locations</p>
               <div className=" flex flex-wrap gap-5">
-                <img
-                  src="https://wallpapercave.com/wp/wp7029244.jpg"
-                  className=" w-[120px] h-[80px] object-cover rounded-md"
-                />
-                <img
-                  src="https://wallpapercave.com/wp/wp7029244.jpg"
-                  className=" w-[120px] h-[80px] object-cover rounded-md"
-                />
-              </div>
-              <p>Hashtag</p>
-              <div className=" space-y-3">
-                <p>#jiyokhulke</p>
-                <p>#kedarnath</p>
+                <div className=" relative  hover:border-2 hover:border-blue-700 rounded-md">
+                  <img
+                    src="https://wallpapercave.com/wp/wp7029244.jpg"
+                    className=" w-[120px] h-[80px] object-cover rounded-md opacity-50"
+                  />
+                  <div className=" absolute top-0 bottom-0 left-0 right-0 w-full h-full  flex justify-center items-center">
+                    <p className=" ">Ladakh</p>
+                  </div>
+                </div>
+                <div className=" relative  hover:border-2 hover:border-blue-700 rounded-md">
+                  <img
+                    src="https://wallpapercave.com/wp/wp7029244.jpg"
+                    className=" w-[120px] h-[80px] object-cover rounded-md opacity-50"
+                  />
+                  <div className=" absolute top-0 bottom-0 left-0 right-0 w-full h-full  flex justify-center items-center">
+                    <p className=" ">Ooty</p>
+                  </div>
+                </div>
+                <div className=" relative  hover:border-2 hover:border-blue-700 rounded-md">
+                  <img
+                    src="https://wallpapercave.com/wp/wp7029244.jpg"
+                    className=" w-[120px] h-[80px] object-cover rounded-md opacity-50"
+                  />
+                  <div className=" absolute top-0 bottom-0 left-0 right-0 w-full h-full  flex justify-center items-center">
+                    <p className=" ">Ladakh</p>
+                  </div>
+                </div>
+                <div className=" relative  hover:border-2 hover:border-blue-700 rounded-md">
+                  <img
+                    src="https://wallpapercave.com/wp/wp7029244.jpg"
+                    className=" w-[120px] h-[80px] object-cover rounded-md opacity-50"
+                  />
+                  <div className=" absolute top-0 bottom-0 left-0 right-0 w-full h-full  flex justify-center items-center">
+                    <p className=" ">Ooty</p>
+                  </div>
+                </div>
               </div>
             </div>
           </>

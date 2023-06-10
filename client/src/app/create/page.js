@@ -35,9 +35,6 @@ export default function page() {
               >
                 <button>Upload vlog</button>
               </div>
-              <div className=" bg-gray-700 rounded-lg w-[150px] h-[100px] flex justify-center items-center space-y-5 hover:border-2 hover:border-blue-600">
-                <button>Upload reel</button>
-              </div>
               <div
                 onClick={() => setType(3)}
                 className=" bg-gray-700 rounded-lg w-[150px] h-[100px] flex justify-center items-center space-y-5 hover:border-2 hover:border-blue-600"
@@ -45,11 +42,41 @@ export default function page() {
                 <button>Go live</button>
               </div>
               <div className=" bg-gray-700 rounded-lg w-[150px] h-[100px] flex justify-center items-center space-y-5 hover:border-2 hover:border-blue-600">
+                <button>Upload reel</button>
+              </div>
+
+              <div className=" bg-gray-700 rounded-lg w-[150px] h-[100px] flex justify-center items-center space-y-5 hover:border-2 hover:border-blue-600">
                 <button>Write blog</button>
               </div>
             </div>
-            <div className="flex-1 flex justify-center pt-20">
-              {type === 1 ? <GoLive /> : <UploadVideo />}
+            <div className="flex-1 justify-center pt-5">
+              {(() => {
+                switch (type) {
+                  case 1:
+                    return <CreatePost />;
+                    break;
+                  case 2:
+                    return <UploadVideo />;
+                    break;
+                  case 3:
+                    return <GoLive />;
+                    break;
+                  case 4:
+                    console.log("Today is Tuesday");
+                    break;
+                  case 5:
+                    console.log("Today is Wednesday");
+                    break;
+                  case 6:
+                    console.log("Today is Thursday");
+                    break;
+                  case 7:
+                    console.log("Today is Friday");
+                    break;
+                  default:
+                    console.log("Invalid Input");
+                }
+              })()}
             </div>
           </div>
         </>
