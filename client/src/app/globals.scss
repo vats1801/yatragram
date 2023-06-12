@@ -24,10 +24,11 @@
     justify-content: center;
 
     .formWrapper {
-        background-color: white;
+        background-color: rgb(42, 41, 41);
         padding: 20px 60px;
         border-radius: 10px;
         display: flex;
+        color: black;
         flex-direction: column;
         gap: 10px;
         align-items: center;
@@ -40,7 +41,9 @@
         }
 
         .title {
-            color: #5d5b8d;
+            color: white;
+            font-size: 20px;
+            font-style: bold;
             font-size: 12px;
         }
 
@@ -54,7 +57,7 @@
                 border: none;
                 width: 250px;
                 border-bottom: 1px solid #a7bcff;
-
+                outline: none;
                 &::placeholder {
                     color: rgb(175, 175, 175);
                 }
@@ -84,7 +87,7 @@
         }
 
         p {
-            color: #5d5b8d;
+            color: white;
             font-size: 12px;
             margin-top: 10px;
         }

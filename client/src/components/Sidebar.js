@@ -53,7 +53,7 @@ export default function Sidebar() {
       className={` w-[250px]  p-5 z-20 space-y-5 h-screen text-white border-r overflow-y-scroll scrollbar-hide border-r-gray-600`}
     >
       <div className=" px-5 h-[80px]">
-        <p>Instagram</p>
+        <p>Yatragram</p>
       </div>
 
       <Link
@@ -152,10 +152,10 @@ export default function Sidebar() {
       >
         <div className=" space-x-5 flex items-center ">
           <img
-            src="https://th.bing.com/th/id/OIP.tuZI9kOeq_ydF-G4pFRM8gHaLH?pid=ImgDet&rs=1"
+            src={currentUser?.photoURL}
             className=" w-8 h-8 rounded-full object-cover"
           />
-          <p>Profile</p>
+          <p>{currentUser?.displayName}</p>
         </div>
       </Link>
       <div

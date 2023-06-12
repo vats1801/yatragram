@@ -7,6 +7,7 @@ import {
   AiOutlineClose,
   AiFillCaretLeft,
   AiFillCaretRight,
+  AiFillHeart,
 } from "react-icons/ai";
 import { BsBookmark } from "react-icons/bs";
 import { MdOutlineLocationOn } from "react-icons/md";
@@ -14,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { RxCross1 } from "react-icons/rx";
 
 import Carousel from "@/components/Carousel";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
@@ -42,6 +44,7 @@ export default function Home() {
   let posts = [
     {
       id: 1,
+      location: "ladakh",
       author: {
         uid: 1,
         isPremium: false,
@@ -56,7 +59,7 @@ export default function Home() {
     },
     {
       id: 1,
-
+      location: "shimla",
       author: {
         uid: 1,
         isPremium: true,
@@ -132,6 +135,7 @@ export default function Home() {
   ];
 
   const [data, setData] = useState({ img: "", i: 0 });
+  const [isLiked, setIsLiked] = useState(false);
   const [prevData, setPrevData] = useState({ img: "", i: 0 });
   const [nextData, setNextData] = useState({ img: "", i: 0 });
   const viewImage = (img, i) => {
@@ -283,24 +287,32 @@ export default function Home() {
               )}
               <div className=" px-40 space-y-10">
                 {posts.map((p, i) => (
-                  <div
-                    onClick={() => handleClick(p.id)}
-                    className="text-sm w-[500px] space-y-3 border-b border-b-gray-600 py-5 "
-                  >
+                  <div className="text-sm w-[500px] space-y-3 border-b border-b-gray-600 py-5 ">
                     <div>
-                      <div className="flex space-x-5 items-center">
-                        <img
-                          src={p.author.image}
-                          className=" w-8 h-8 rounded-full object-cover"
-                        />
-                        <p className=" text-sm">{p.author.name}</p>
-                        {p.author.isPremium && (
+                      <div className="flex justify-between items-center">
+                        <div className=" flex items-center space-x-5">
                           <img
-                            src="https://cdn2.iconfinder.com/data/icons/essentials-volume-i/128/verified-gold-512.png"
-                            className=" w-[20px] h-[20px] "
+                            src={p.author.image}
+                            className=" w-8 h-8 rounded-full object-cover"
                           />
-                        )}
-                        <p>Ladakh</p>
+                          <p className=" text-sm">{p.author.name}</p>
+                          {p.author.isPremium && (
+                            <img
+                              src="https://cdn2.iconfinder.com/data/icons/essentials-volume-i/128/verified-gold-512.png"
+                              className=" w-[20px] h-[20px] "
+                            />
+                          )}
+                        </div>
+                        <div>
+                          <Link
+                            className=" flex items-center space-x-3"
+                            href={`/location/${p.location}`}
+                          >
+                            <MdOutlineLocationOn size={25} />
+
+                            <p>{p.location}</p>
+                          </Link>
+                        </div>
                       </div>
                     </div>
                     <div>
@@ -311,12 +323,27 @@ export default function Home() {
                     </div>
                     <div className=" flex justify-between items-center">
                       <div className=" flex space-x-5">
-                        <AiOutlineHeart size={22} />
+                        {isLiked ? (
+                          <AiFillHeart
+                            onClick={() => setIsLiked(false)}
+                            size={25}
+                            color="red"
+                          />
+                        ) : (
+                          <AiOutlineHeart
+                            onClick={() => setIsLiked(true)}
+                            size={25}
+                          />
+                        )}
+
                         <AiOutlineMessage size={22} />
                       </div>
                       <BsBookmark size={22} />
                     </div>
-                    <div className=" space-y-2">
+                    <div
+                      onClick={() => handleClick(p.id)}
+                      className=" space-y-2"
+                    >
                       <p>{p.likes}</p>
                       <p>{p.caption}</p>
                       <p>View all {p.comments} comments</p>

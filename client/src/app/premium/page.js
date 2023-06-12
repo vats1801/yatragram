@@ -22,6 +22,9 @@ export default function page() {
             <div className="flex space-x-3">
               <TiTick size={25} /> <p>Influencer premium post</p>
             </div>
+            <div className="flex space-x-3">
+              <TiTick size={25} /> <p> Verified Golden Tick</p>
+            </div>
           </div>
 
           <button className=" px-10 py-2 text-white bg-blue-700 rounded-lg">

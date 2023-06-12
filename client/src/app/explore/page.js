@@ -1,5 +1,6 @@
 "use client";
 import Sidebar from "@/components/Sidebar";
+import Link from "next/link";
 import React from "react";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
@@ -52,15 +53,20 @@ export default function page() {
               Planner
             </p>
           </div>
-          <div className=" hover:border-2 text-center hover:border-blue-800 relative flex-1  h-[100px] rounded-lg">
-            <img
-              src="https://www.indianpanorama.in/blog/wp-content/uploads/2019/06/blog-cover1.jpg"
-              className=" w-full h-full object-cover  rounded-lg opacity-25 "
-            />
-            <p className=" absolute top-[40px] bottom-[40px] left-[40%] right-[40%]   ">
-              Search location
-            </p>
-          </div>
+          <Link
+            className=" hover:border-2  hover:border-blue-800  flex-1   rounded-lg"
+            href="/location/places"
+          >
+            <div className=" text-center  relative w-full  h-[100px] rounded-lg">
+              <img
+                src="https://www.indianpanorama.in/blog/wp-content/uploads/2019/06/blog-cover1.jpg"
+                className=" w-full h-full object-cover  rounded-lg opacity-25 "
+              />
+              <p className=" absolute top-[40px] bottom-[40px] left-[40%] right-[40%]   ">
+                Search location
+              </p>
+            </div>
+          </Link>
           {/* <div className=" flex flex-col  space-y-3  flex-1 pt-2  ">
             <input
               type="search"
